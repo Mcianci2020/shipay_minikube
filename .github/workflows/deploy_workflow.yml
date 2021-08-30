@@ -1,0 +1,19 @@
+name: Deploy Minikube DevOps
+
+on: push
+
+
+jobs:
+
+  IaC:
+    runs-on: self-hosted
+      steps:
+
+        - name: Checkout Repo
+          uses: actions/checkout@v2.3.2
+
+        - name: Apply Namespaces
+          uses: ./.github/actions/minikube-helm-deploy
+          if: contains('refs/heads/master', github.ref)
+          with:
+            DEPLOY_CONFIG_FILES: kubernetes/00-namespaces/namespaces.yml 
