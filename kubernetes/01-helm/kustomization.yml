@@ -1,0 +1,6 @@
+commonLabels:
+  app: minikube
+resources:
+  - allresources-clusterrole.yml
+  - clusterrolebinding.yml
+  - serviceaccount.yml
