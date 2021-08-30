@@ -1,0 +1,19 @@
+# action.yml
+name: "Eks Helm Deploy"
+author: "Marcos Cianci"
+description: "Github Actions for Helm to Minikube"
+branding:
+  icon: anchor
+  color: yellow
+
+inputs:    
+  name:
+    description: "Name of YAML Deploy."
+    required: true
+
+runs:
+  using: 'docker'
+  image: Dockerfile
+  env:
+    DEPLOY_CONFIG_VALUES: ${{ inputs.name }}
+    
