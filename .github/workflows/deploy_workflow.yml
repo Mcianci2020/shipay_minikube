@@ -22,6 +22,6 @@ jobs:
       - name: Helm Config
         if: contains('refs/heads/master', github.ref)
         env:
-          DEPLOY_CONFIG_FILES: kubernetes/01-helm/kustomization.yml 
+          DEPLOY_CONFIG_FILES: kubernetes/01-helm/
         run: |
           kubectl apply -k ${DEPLOY_CONFIG_FILES}   
