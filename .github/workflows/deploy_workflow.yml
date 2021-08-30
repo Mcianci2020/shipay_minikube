@@ -25,3 +25,10 @@ jobs:
           DEPLOY_CONFIG_FILES: kubernetes/01-helm/
         run: |
           kubectl apply -k ${DEPLOY_CONFIG_FILES}   
+      
+      - name: Traefik Ingress
+        if: contains('refs/heads/master', github.ref)
+        env:
+          DEPLOY_CONFIG_FILES: kubernetes/02-traefik/traefik-web.yml
+        run: |
+          kubectl apply -f ${DEPLOY_CONFIG_FILES}
